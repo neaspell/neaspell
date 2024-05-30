@@ -1,0 +1,37 @@
+# suffix, prefix, suffix and prefix
+# by default, a suffix and a prefix can be combined
+# by default, two suffixes are not combined
+
+PFX A Y 1
+PFX A 0 re .
+
+SFX G Y 2
+SFX G   e     ing        e
+SFX G   0     ing        [^e] 
+
+SFX S Y 4
+SFX S   y     ies        [^aeiou]y
+SFX S   0     s          [aeiou]y
+SFX S   0     es         [sxzh]
+SFX S   0     s          [^sxzhy]
+
+NEA DIC {
+    word
+    game/G
+    spell/AGS
+}
+NEA TESTGOOD {
+    word
+    game
+    gaming
+    spell
+    spells
+    respell
+    respells
+    spelling
+    respelling
+}
+NEA TESTBAD {
+    spellings
+    respellings
+}

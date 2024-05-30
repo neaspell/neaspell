@@ -1,0 +1,129 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "id* -D --warn dic,dupl",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-D", "-d", "id*", "--warn", "dic,dupl"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "id* -D",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-D", "-d", "id*"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "es_ES",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-d", "es_ES", "-l", "..\\tests\\es1.txt"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "en_US",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-d", "en_US", "-l", "..\\tests\\en1.txt"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "* (all)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-D", "-d", "*"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "test base",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-D", "--test", "base"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "test base --test-word",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-D", "--test", "base", "--test-word", "etc."],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}/..",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "-l base1.good",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["-d", "..\\tests\\base\\base1", "-l", "..\\tests\\base\\base1.good"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "--test affix1",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["--test", "tests/affix1"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "--test affix1 --test-word -respells",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["--test", "affix1", "--test-word", "respells"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}\\tests",
+            "environment": []//,
+            //"console": "externalTerminal"
+        },
+        {
+            "name": "--test base3",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\neaspell.exe",
+            "args": ["--test", "tests/base/base3"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": []//,
+            //"console": "externalTerminal"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+# Character case, compatible mode
+# Before internet age (compatible mode), lowercase wasn't allowed as much
+# 
+WORDCHARS .'
+
+SFX S Y 4
+SFX S   y     ies        [^aeiou]y
+SFX S   0     s          [aeiou]y
+SFX S   0     es         [sxzh]
+SFX S   0     s          [^sxzhy]
+
+SFX M Y 1
+SFX M   0     's         .
+
+NEA DIC {
+    world
+    England
+    UNESCO
+    BLT/SM
+}
+NEA TESTGOOD {
+    world
+    World
+    WORLD
+    England
+    ENGLAND
+    UNESCO
+    BLT
+    BLTs
+    BLT's
+}
+NEA TESTBAD {
+    england
+    Unesco
+    unesco
+    Blt
+    blt
+}
