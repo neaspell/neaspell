@@ -1,6 +1,7 @@
-[package]
-name = "neaspell"
-version = "0.1.4"
-edition = "2021"
+[workspace]
 
-[dependencies]
+members = [ "neaspell_core",
+    "neaspell_std",
+    "neaspell_wasm",
+]
+resolver = "2"

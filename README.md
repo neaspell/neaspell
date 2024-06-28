@@ -1,16 +1,45 @@
 # About Neaspell
 
-Neaspell is a work in progress. This is spelling-check library and CLI program written in memory-safe language Rust.
+Neaspell is a spelling-check library (work-in-progress) and CLI program written in memory-safe language Rust. Neaspell can be used in the internet when compiled into wasm. Development and testing are done on Windows and Linux.
 
-With the Libreoffice set of dictionaries, it can spell the Spanish texts.
+With the Libreoffice set of dictionaries, it can spell the Spanish or English texts.
 
-
-
-# Tests
+# Building
 From the Rust web page
+```
 https://www.rust-lang.org/tools/install
-install rustup.
+```
+install rustup. From the rust workspace directory (the one with README.md file), compile with
+```
+cargo build
+```
+# Running from Windows or Linux console
+The following example assumes the dictionary files ../aff-dic/es_ES.aff and ../aff-dic/es_ES.dic. The text to be spell-checked is in the ../tests/es1.txt file. Then run
+```
+cargo --quiet run -- -d ../aff-dic/es_ES ../tests/es1.txt -l
+```
+The command outputs the words with spelling errors. In Powershell, the backslashes can be used, too.
 
+# Running from browser
+Install wasm-pack from
+```
+https://rustwasm.github.io/wasm-pack/installer/
+```
+and a local http server with
+```
+cargo install miniserve
+```
+From the neaspell_wasm directory, compile the example and then run locally
+```
+wasm-pack build --target web
+miniserve . --index "src\index.html" -p 8080
+```
+Then you can see the example web page at
+```
+http://127.0.0.1:8080/
+```
+
+# Testing
 The tests are run on Linux and Windows in bash shell.
 In Windows, git bash is used for testing.
 In Windows, Powershell can also be used.

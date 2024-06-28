@@ -20,7 +20,7 @@ NEA DIC {
     game/G
     spell/AGS
 }
-NEA TESTGOOD {
+NEA TESTGOODWORDS {
     word
     game
     gaming
@@ -31,7 +31,7 @@ NEA TESTGOOD {
     spelling
     respelling
 }
-NEA TESTBAD {
+NEA TESTBADWORDS {
     spellings
     respellings
 }

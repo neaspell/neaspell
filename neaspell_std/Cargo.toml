@@ -1,0 +1,7 @@
+[package]
+name = "neaspell_std"
+version = "0.1.5"
+edition = "2021"
+
+[dependencies]
+neaspell_core = { path = "../neaspell_core" }

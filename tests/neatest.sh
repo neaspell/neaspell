@@ -65,13 +65,13 @@ for TEST_CASE in $* ; do
             exit 1
         fi
         if [ -f "$EXT_BASE.good" ] ; then
-            echo "NEA TESTGOOD {" >> $INT_NAME
+            echo "NEA TESTGOODWORDS {" >> $INT_NAME
             cat "$EXT_BASE.good" | sed 's/^/    /' >> $INT_NAME
             echo "}" >> $INT_NAME
             #echo "    included $EXT_BASE.good"
         fi
         if [ -f "$EXT_BASE.wrong" ] ; then
-            echo "NEA TESTBAD {" >> $INT_NAME
+            echo "NEA TESTBADWORDS {" >> $INT_NAME
             cat "$EXT_BASE.wrong" | sed 's/^/    /' >> $INT_NAME
             echo "}" >> $INT_NAME
             #echo "    included $EXT_BASE.wrong"
@@ -80,30 +80,44 @@ for TEST_CASE in $* ; do
         #echo "Converting internal test case from $INT_NAME"
         csplit --digits=1  --quiet --prefix="$INT_NAME." $INT_NAME "/NEA/0" "{*}"
         mv $INT_NAME.0 $EXT_BASE.aff
+        rm -f $EXT_BASE.dic $EXT_BASE.good $EXT_BASE.wrong
         #echo "    to $EXT_BASE.aff"
-        for FN in 1 2 3 ; do
-            if [ -e "$INT_NAME.$FN" ] ; then
-                TYPE=$(head -n 1 "$INT_NAME.$FN" |grep -o -E "(DIC|TESTGOOD|TESTBAD)")
-                case "$TYPE" in
-                    "DIC")
-                        EXT=dic
-                        COUNT=$(tail -n +2 "$INT_NAME.$FN" | grep -c -v -E "^}")
-                        echo $COUNT > "$EXT_BASE.$EXT"
-                        tail -n +2 "$INT_NAME.$FN" | grep -v -E "^}" | sed 's/^    //' >> "$EXT_BASE.$EXT"
-                        ;;
-                    "TESTGOOD")
-                        EXT=good 
-                        tail -n +2 "$INT_NAME.$FN" | grep -v -E "^}" | sed 's/^    //' > "$EXT_BASE.$EXT"
-                        ;;
-                    "TESTBAD")
-                        EXT=wrong
-                        tail -n +2 "$INT_NAME.$FN" | grep -v -E "^}" | sed 's/^    //' > "$EXT_BASE.$EXT"
-                        ;;
-                esac            
-                #echo "    to $EXT_BASE.$EXT"
-                rm "$INT_NAME.$FN"
+        for FN in 1 2 3 4 ; do
+            if [ ! -e "$INT_NAME.$FN" ] ; then
+                continue
             fi
+            TYPE=$(head -n 1 "$INT_NAME.$FN" |grep -o -E "(DIC|TESTBADGRAM|TESTGOODWORDS|TESTBADWORDS)")
+            case "$TYPE" in
+                "TESTBADGRAM")
+                    EXT=aff
+                    tail -n +2 "$INT_NAME.$FN" | grep -v -E "^ *[}#]" | sed 's/^    //' > "$EXT_BASE.$EXT"
+                    ;;
+                "DIC")
+                    EXT=dic
+                    COUNT=$(tail -n +2 "$INT_NAME.$FN" | grep -c -v -E "^ *[}#]")
+                    echo $COUNT > "$EXT_BASE.$EXT"
+                    tail -n +2 "$INT_NAME.$FN" | grep -v -E "^ *[}#]" | sed 's/^    //' >> "$EXT_BASE.$EXT"
+                    ;;
+                "TESTGOODWORDS")
+                    EXT=good 
+                    tail -n +2 "$INT_NAME.$FN" | grep -v -E "^ *[}#]" | sed 's/^    //' > "$EXT_BASE.$EXT"
+                    ;;
+                "TESTBADWORDS")
+                    EXT=wrong
+                    tail -n +2 "$INT_NAME.$FN" | grep -v -E "^ *[}#]" | sed 's/^    //' > "$EXT_BASE.$EXT"
+                    ;;
+            esac            
+            #echo "    to $EXT_BASE.$EXT"
+            rm "$INT_NAME.$FN"
         done
+        if [ ! -f "$EXT_BASE.dic" ] ; then
+            echo "1" > $EXT_BASE.dic
+            # this is not a word
+            echo "thssntwd" >> $EXT_BASE.dic
+        fi
+        if [ ! -f "$EXT_BASE.good" ] ; then
+            echo "" > $EXT_BASE.good
+        fi
     fi
     if [ -n "$INT_TEST_CMD" ] ; then
         echo "Executing $INT_TEST_CMD $INT_NAME"

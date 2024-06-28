@@ -1,0 +1,10 @@
+FLAG UTF-8
+SFX G Y 1
+SFX G   e     ing        e
+NEA DIC {
+    game/G
+}
+NEA TESTGOODWORDS {
+    game
+    gaming
+}

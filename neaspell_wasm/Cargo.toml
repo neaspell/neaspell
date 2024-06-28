@@ -1,0 +1,15 @@
+[package]
+name = "neaspell_wasm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+hashbrown = "0.14.5"
+wasm-bindgen = "0.2.92"
+neaspell_core = { path = "../neaspell_core" }
+
+[profile.release]
+strip = true

@@ -1,0 +1,10 @@
+FLAG long
+SFX G1 Y 1
+SFX G1   e     ing        e
+NEA DIC {
+    game/G1
+}
+NEA TESTGOODWORDS {
+    game
+    gaming
+}

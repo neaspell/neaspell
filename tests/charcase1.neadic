@@ -18,7 +18,7 @@ NEA DIC {
     UNESCO
     BLT/SM
 }
-NEA TESTGOOD {
+NEA TESTGOODWORDS {
     world
     World
     WORLD
@@ -29,7 +29,7 @@ NEA TESTGOOD {
     BLTs
     BLT's
 }
-NEA TESTBAD {
+NEA TESTBADWORDS {
     england
     Unesco
     unesco

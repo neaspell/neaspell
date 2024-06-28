@@ -1,0 +1,21 @@
+# todo "respells" in TESTBADWORDS would cause error.
+
+PFX A Y 1
+PFX A 0 re .
+
+SFX G Y 2
+SFX G   e     ing/Y        e
+SFX G   0     ing/Y        [^e] 
+
+SFX S Y 4
+SFX S   y     ies        [^aeiou]y
+SFX S   0     s          [aeiou]y
+SFX S   0     es         [sxzh]
+SFX S   0     s          [^sxzhy]
+
+NEA DIC {
+    spell/AG
+}
+NEA TESTBADWORDS {
+    spells
+}

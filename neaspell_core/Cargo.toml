@@ -1,0 +1,7 @@
+[package]
+name = "neaspell_core"
+version = "0.1.5"
+edition = "2021"
+
+[dependencies]
+hashbrown = "0.14.5"
